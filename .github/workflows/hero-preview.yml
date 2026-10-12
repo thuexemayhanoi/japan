@@ -1,0 +1,43 @@
+name: Japan hero calculator preview (temporary)
+on:
+  push:
+    branches: ['feat/japan-hero-price-calculator']
+    paths: ['site/**','scripts/**','assets/**','.github/workflows/hero-preview.yml']
+permissions:
+  contents: write
+concurrency:
+  group: japan-hero-calculator-preview
+  cancel-in-progress: false
+jobs:
+  preview:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate homepage and validate full SEO
+        run: |
+          node --check scripts/build.mjs
+          node --check assets/js/rental-calculator.js
+          node scripts/build.mjs
+          node scripts/qa-factory.mjs
+          node scripts/qa-calculator.mjs
+          node scripts/seo-audit.mjs --mode=offline
+          node scripts/build.mjs --check
+          node scripts/smoke-factory.mjs
+      - name: Commit preview HTML to feature branch only
+        run: |
+          set -euo pipefail
+          git config user.name "japan-hero-preview"
+          git config user.email "japan-hero-preview@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "No generated change"; exit 0; fi
+          git commit -m "build(japan): render calculator hero from NAP and prices config"
+          git fetch origin feat/japan-hero-price-calculator
+          if [ "$(git rev-parse origin/feat/japan-hero-price-calculator)" != "$(git rev-parse HEAD^)" ]; then echo "SAFE_STOP feature branch advanced"; exit 1; fi
+          git push origin HEAD:feat/japan-hero-price-calculator

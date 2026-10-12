@@ -365,5 +365,26 @@
         ]
       ]
     }
-  ]
+  ],
+  "rentalCalculator": {
+    "schema_version": 1,
+    "currency": "VND",
+    "maxDays": 30,
+    "maxDailyEstimateDays": 6,
+    "models": [
+      {
+        "id": "manual",
+        "label": "セミオート車",
+        "example": "Honda Wave",
+        "dailyVnd": 150000
+      },
+      {
+        "id": "scooter",
+        "label": "スクーター",
+        "example": "Honda Vision",
+        "dailyVnd": 200000
+      }
+    ],
+    "disclaimer": "表示は1〜6日間の参考計算です。7日以上、保証金、配達・回収料金、車両の空き状況、実際の契約条件はお問い合わせください。"
+  }
 }
