@@ -1,0 +1,42 @@
+name: Japan SEO Audit and Monitoring
+on:
+  pull_request:
+    branches: [main]
+    paths: ['scripts/**','site/**','data/**','**/index.html','sitemap.xml','robots.txt','.github/workflows/seo-audit-monitor.yml']
+  push:
+    branches: [main]
+    paths: ['scripts/**','site/**','data/**','**/index.html','sitemap.xml','robots.txt']
+  schedule:
+    - cron: '23 2 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        required: true
+        default: full
+        options: [offline,full]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run offline SEO audit
+        run: node scripts/seo-audit.mjs --mode=offline --report=seo-offline.json
+      - name: Monitor live website when requested or scheduled
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'full')
+        run: node scripts/seo-audit.mjs --mode=full --report=seo-full.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: japan-seo-audit-${{ github.run_id }}
+          path: |
+            seo-offline.json
+            seo-full.json
+          if-no-files-found: warn
+          retention-days: 30

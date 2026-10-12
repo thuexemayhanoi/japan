@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "locale": "ja-JP",
+  "target_articles": 200,
+  "separate_archive_min_articles": 5,
+  "parents": [
+    {
+      "id": "motorbikes",
+      "label": "バイクの種類",
+      "nav_label": "バイク",
+      "url": "/bike-types/",
+      "planned_capacity": 50,
+      "description": "バイクの種類に関する現地情報をまとめ、必要な確認事項を分かりやすく紹介します。",
+      "children": [
+        {
+          "id": "scooters",
+          "label": "スクーター",
+          "planned_capacity": 20,
+          "description": "オートマチック車の操作、モデル選び、用途別の特徴"
+        },
+        {
+          "id": "semiautomatic",
+          "label": "セミオート車",
+          "planned_capacity": 12,
+          "description": "ギア操作や車種ごとの違いを確認するための情報"
+        },
+        {
+          "id": "50cc",
+          "label": "50ccクラス",
+          "planned_capacity": 10,
+          "description": "50cc車両の選び方と適用される運転資格の確認"
+        },
+        {
+          "id": "electric",
+          "label": "電動バイク",
+          "planned_capacity": 8,
+          "description": "電動車両の充電、航続距離、返却条件の確認"
+        }
+      ]
+    },
+    {
+      "id": "prices",
+      "label": "料金と利用条件",
+      "nav_label": "料金",
+      "url": "/rental-prices/",
+      "planned_capacity": 40,
+      "description": "料金と利用条件に関する現地情報をまとめ、必要な確認事項を分かりやすく紹介します。",
+      "children": [
+        {
+          "id": "duration",
+          "label": "レンタル期間",
+          "planned_capacity": 12,
+          "description": "日・週・月の利用期間と契約上の確認事項"
+        },
+        {
+          "id": "deposits",
+          "label": "保証金と支払い",
+          "planned_capacity": 10,
+          "description": "保証金、支払方法、返金と領収書についての解説"
+        },
+        {
+          "id": "delivery",
+          "label": "受取・返却と追加費用",
+          "planned_capacity": 10,
+          "description": "受け渡し場所、時間、費用の確認方法"
+        },
+        {
+          "id": "comparison",
+          "label": "料金・車種比較",
+          "planned_capacity": 8,
+          "description": "料金表の読み方と条件をそろえた比較"
+        }
+      ]
+    },
+    {
+      "id": "guide",
+      "label": "レンタルガイド",
+      "nav_label": "ガイド",
+      "url": "/rental-guide/",
+      "planned_capacity": 55,
+      "description": "レンタルガイドに関する現地情報をまとめ、必要な確認事項を分かりやすく紹介します。",
+      "children": [
+        {
+          "id": "procedure",
+          "label": "予約・必要書類",
+          "planned_capacity": 16,
+          "description": "申込から受渡しまでの流れと準備"
+        },
+        {
+          "id": "inspection",
+          "label": "点検・安全",
+          "planned_capacity": 14,
+          "description": "車両の状態、安全装備と受取時の確認"
+        },
+        {
+          "id": "city-driving",
+          "label": "市内走行",
+          "planned_capacity": 13,
+          "description": "交通状況や日常利用の注意点"
+        },
+        {
+          "id": "returns",
+          "label": "返却・トラブル対応",
+          "planned_capacity": 12,
+          "description": "返却方法とトラブル時の連絡"
+        }
+      ]
+    },
+    {
+      "id": "areas",
+      "label": "ハノイのエリア",
+      "nav_label": "エリア",
+      "url": "/hanoi-areas/",
+      "planned_capacity": 30,
+      "description": "ハノイのエリアに関する現地情報をまとめ、必要な確認事項を分かりやすく紹介します。",
+      "children": [
+        {
+          "id": "old-quarter",
+          "label": "旧市街・ホアンキエム",
+          "planned_capacity": 10,
+          "description": "ホアンキエム周辺の現地情報と移動手段"
+        },
+        {
+          "id": "longbien",
+          "label": "ロンビエン・ザーラム",
+          "planned_capacity": 8,
+          "description": "店舗所在地付近のアクセスと実用情報"
+        },
+        {
+          "id": "westlake",
+          "label": "タイホー・バーディン",
+          "planned_capacity": 7,
+          "description": "西湖とバーディン周辺の移動に関する知識"
+        },
+        {
+          "id": "stations",
+          "label": "駅・アクセス",
+          "planned_capacity": 5,
+          "description": "駅周辺の待ち合わせと交通手段"
+        }
+      ]
+    },
+    {
+      "id": "routes",
+      "label": "ルート・移動案内",
+      "nav_label": "移動案内",
+      "url": "/routes-mobility/",
+      "planned_capacity": 25,
+      "description": "ルート・移動案内に関する現地情報をまとめ、必要な確認事項を分かりやすく紹介します。",
+      "children": [
+        {
+          "id": "urban-routes",
+          "label": "市内ルート",
+          "planned_capacity": 9,
+          "description": "市内移動の計画方法"
+        },
+        {
+          "id": "weather",
+          "label": "天気・季節",
+          "planned_capacity": 6,
+          "description": "雨季と気候の影響に応じた移動判断"
+        },
+        {
+          "id": "alternatives",
+          "label": "ほかの移動手段",
+          "planned_capacity": 6,
+          "description": "タクシーや公共交通との比較"
+        },
+        {
+          "id": "outside",
+          "label": "ハノイ郊外への移動",
+          "planned_capacity": 4,
+          "description": "遠距離の安全性や契約制限の確認"
+        }
+      ]
+    }
+  ]
+}

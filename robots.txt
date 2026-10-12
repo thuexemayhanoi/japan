@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ja.rentbikehanoi.com/sitemap.xml
