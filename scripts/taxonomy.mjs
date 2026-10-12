@@ -77,7 +77,7 @@ export function taxonomyMenu(taxonomy,pages,categoryMap,current){
   html+='<details class="nav-group"><summary>'+esc(parent.nav_label)+'</summary><div class="nav-panel">'+
     '<strong class="nav-panel-heading">'+esc(parent.label)+'</strong>'+landing+items+'</div></details>';
  }
- return html+mainLink('FAQ','/faq/')+mainLink('Contacto','/contacto/');
+ return html+mainLink('よくある質問','/faq/')+mainLink('お問い合わせ','/contact/');
 }
 export function parentCategorySection(parentUrl,taxonomy,liveCategories,pages){
  const parent=taxonomy.parents.find(p=>p.url===parentUrl);if(!parent)return '';
@@ -92,8 +92,8 @@ export function parentCategorySection(parentUrl,taxonomy,liveCategories,pages){
    '</h3><p>'+esc(child.description)+'</p><ul class="taxonomy-article-list">'+
    items.map(a=>'<li><a href="'+esc(a.url)+'">'+esc(a.title)+'</a></li>').join('')+'</ul></section>';
  }).join('');
- return '<section class="section alt taxonomy-section" aria-label="関連記事 por categorías"><div class="wrap">'+
- '<p class="eyebrow">EXPLORAR POR CATEGORÍA</p><h2>'+esc(parent.label)+': artículos organizados</h2>'+
+ return '<section class="section alt taxonomy-section" aria-label="カテゴリー別の記事"><div class="wrap">'+
+ '<p class="eyebrow">カテゴリーから探す</p><h2>'+esc(parent.label)+': 記事一覧</h2>'+
  '<div class="taxonomy-grid">'+entries+'</div></div></section>';
 }
 export function categoryArchiveBody(page,taxonomy,liveCategories){
