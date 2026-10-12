@@ -26,11 +26,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Run offline SEO audit
-        run: node scripts/seo-audit.mjs --mode=offline --report=seo-offline.json
+      - name: Run offline SEO audit and deep nine-gate monitor
+        run: |
+          node scripts/seo-audit.mjs --mode=offline --report=seo-offline.json
+          node scripts/seo-deep-monitor.mjs --mode=offline --report=seo-deep-offline.json
       - name: Monitor live website when requested or scheduled
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'full')
-        run: node scripts/seo-audit.mjs --mode=full --report=seo-full.json
+        run: |
+          node scripts/seo-audit.mjs --mode=full --report=seo-full.json
+          node scripts/seo-deep-monitor.mjs --mode=full --report=seo-deep-full.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -38,5 +42,7 @@ jobs:
           path: |
             seo-offline.json
             seo-full.json
+            seo-deep-offline.json
+            seo-deep-full.json
           if-no-files-found: warn
           retention-days: 30

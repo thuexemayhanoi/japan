@@ -14,6 +14,8 @@ const wordCount=s=>Array.from(String(s).replace(/\s+/gu,'')).length; // JA: real
 function verifyPlan(){
  if(rows.length>cfg.target_articles||!unique(rows.map(r=>r.id))||!unique(rows.map(r=>r.url))||!unique(rows.map(r=>r.working_title.toLocaleLowerCase('ja'))))throw Error('Invalid or duplicate plan');
  for(const r of rows)if(!/^JP-\d{4}$/.test(r.id)||!cfg.allowed_hubs.includes(r.hub)||r.url!==r.hub+r.slug+'/'||!/^[a-z0-9-]+$/.test(r.slug))throw Error('Invalid route '+r.id);
+ const keywordKey=r=>String(r.primary_keyword||'').normalize('NFKC').toLocaleLowerCase('ja').replace(/[\s\u3000\p{P}\p{S}]+/gu,'');
+ if(!unique(rows.map(keywordKey))||rows.some(r=>!keywordKey(r)))throw Error('EDITORIAL_STOP duplicate or empty primary keyword; human intent review required');
  for(const id of published)if(!rows.some(r=>r.id===id))throw Error('Published ID missing from plan '+id);
 }
 function queue(){
