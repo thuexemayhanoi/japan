@@ -2,7 +2,7 @@ name: Japan preview build (temporary)
 on:
   push:
     branches: ['feat/japan-honda-red-200-foundation']
-    paths: ['site/**','data/**','scripts/**','.github/workflows/japan-preview.yml']
+    paths: ['site/**','data/**','scripts/**','assets/**','.github/workflows/japan-preview.yml']
 permissions:
   contents: write
 concurrency:
