@@ -4,7 +4,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const json=f=>JSON.parse(read(f)),data=json('site/data.json'),tax=json('site/taxonomy.json'),plan=json('data/editorial-plan.json').articles;
 const cfg=json('data/factory-config.json'),state=json('data/factory-state.json'),queue=json('data/writer-queue.json'),issues=[];
-if(cfg.target_articles!==200||cfg.domain!=='https://ja.rentbikehanoi.com/')issues.push('Factory config target/domain mismatch');
+if(cfg.target_articles!==200||cfg.domain!=='https://ja.rentbikehanoi.com')issues.push('Factory config target/domain mismatch');
 validateTaxonomy(tax,plan,state.published_ids,data.pages);
 const pub=state.published_ids.map(id=>{const p=plan.find(z=>z.id===id);if(!p)throw Error('Unknown published ID '+id);const article=json('content/articles/'+id+'.json');return {...p,title:article.title,intro:article.intro}});
 const pages=data.pages.map(x=>({...x}));decorateTaxonomy(tax,pages,pub);
