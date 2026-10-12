@@ -1,0 +1,63 @@
+name: Japan Article Factory 200
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_factory/inbox/**'
+      - 'data/editorial-plan.json'
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Factory controller; no paid AI API calls'
+        type: choice
+        required: true
+        default: status
+        options: [status,refresh-queue,process,pause,resume]
+permissions:
+  contents: write
+concurrency:
+  group: japan-article-factory
+  cancel-in-progress: false
+jobs:
+  factory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Choose safe mode
+        id: choose
+        env:
+          MODE: ${{ inputs.action }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT" = "workflow_dispatch" ]; then value="$MODE"; else value="process"; fi
+          echo "mode=$value" >> "$GITHUB_OUTPUT"
+      - name: Validate and run
+        env:
+          MODE: ${{ steps.choose.outputs.mode }}
+        run: |
+          node scripts/build.mjs --check
+          node scripts/qa-factory.mjs
+          if [ "$MODE" = "status" ]; then node scripts/factory.mjs status; else
+            node scripts/factory.mjs "$MODE"
+            node scripts/build.mjs
+            node scripts/qa-factory.mjs
+            node scripts/build.mjs --check
+          fi
+      - name: Commit only when changed
+        if: steps.choose.outputs.mode != 'status'
+        run: |
+          set -euo pipefail
+          git config user.name "japan-content-factory"
+          git config user.email "japan-content-factory@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "No production changes"; exit 0; fi
+          git commit -m "factory(japan): approved action ${{ steps.choose.outputs.mode }}"
+          git fetch origin main
+          if [ "$(git rev-parse origin/main)" != "$(git rev-parse HEAD^)" ]; then echo "SAFE_STOP branch changed"; exit 1; fi
+          git push origin HEAD:main

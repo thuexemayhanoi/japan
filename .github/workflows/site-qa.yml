@@ -1,0 +1,26 @@
+name: Japan Site Build QA
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+    paths: ['scripts/**','site/**','data/**','content/articles/**','.github/workflows/site-qa.yml']
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify Japanese SEO and article factory
+        run: |
+          node --check scripts/build.mjs
+          node --check scripts/factory.mjs
+          node --check scripts/qa-factory.mjs
+          node scripts/build.mjs --check
+          node scripts/qa-factory.mjs
+          node scripts/smoke-factory.mjs
