@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "target_articles": 200,
+  "batch_size": 3,
+  "min_characters": 1000,
+  "max_characters": 10000,
+  "min_sections": 4,
+  "max_article_faq": 8,
+  "allowed_hubs": [
+    "/bike-types/",
+    "/rental-prices/",
+    "/rental-guide/",
+    "/hanoi-areas/",
+    "/routes-mobility/"
+  ],
+  "domain": "https://ja.rentbikehanoi.com/",
+  "locale": "ja-JP"
+}
