@@ -22,5 +22,6 @@ try{
  run('scripts/factory.mjs',['process']);run('scripts/build.mjs');run('scripts/qa-factory.mjs');run('scripts/build.mjs',['--check']);
  if(!read('sitemap.xml').includes('/rental-guide/renting-motorbike-hanoi/'))throw Error('Published URL missing in sitemap');
  if(!read('rental-guide/renting-motorbike-hanoi/index.html').includes('"@type":"Article"'))throw Error('Published Article schema missing');
+ if(!read('rental-guide/renting-motorbike-hanoi/index.html').includes('"inLanguage":"ja"'))throw Error('Japanese article structured-data language missing');
  console.log('JAPAN_FACTORY_SMOKE_PASS simulated_1_article; production untouched');
 }finally{fs.rmSync(tmp,{force:true,recursive:true})}

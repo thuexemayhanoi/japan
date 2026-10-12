@@ -102,7 +102,7 @@ const files=generate(data);
 const escapeHtml=x=>String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 for(const page of accepted){
  const filename=page.url.slice(1)+'index.html';
- const schema={'@context':'https://schema.org','@type':'Article',headline:page.title,description:page.desc,inLanguage:'es',
+ const schema={'@context':'https://schema.org','@type':'Article',headline:page.title,description:page.desc,inLanguage:'ja',
   mainEntityOfPage:data.site.base.slice(0,-1)+page.url,datePublished:page.article.published_at,
   dateModified:page.article.published_at,author:{'@type':'Organization',name:data.business.name},
   publisher:{'@type':'Organization',name:data.business.name}};
