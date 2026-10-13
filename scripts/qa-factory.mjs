@@ -24,6 +24,10 @@ for(const page of pages){
  if(!html.includes('rel="canonical" href="'+expected+'"'))issues.push('Incorrect canonical '+file);
  if(!html.includes('<html lang="ja">'))issues.push('Incorrect Japanese lang '+file);
  if(!html.includes('<meta name="robots" content="index,follow">'))issues.push('Noindex error '+file);
+ if(data.site.googleSiteVerification){
+  const verification='<meta name="google-site-verification" content="'+data.site.googleSiteVerification+'">';
+  if(html.split(verification).length!==2)issues.push('Missing or repeated GSC meta '+file);
+ }
  if((html.match(/<h1(?:\s|>)/g)||[]).length!==1)issues.push('H1 count '+file);
  if((html.match(/class="nav-group"/g)||[]).length!==15)issues.push('Desktop/mobile/footer 5 category menu groups missing '+file);
  if(!html.includes('"@type":"LocalBusiness"'))issues.push('LocalBusiness schema missing '+file);
