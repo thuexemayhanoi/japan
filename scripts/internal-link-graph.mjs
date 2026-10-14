@@ -104,10 +104,10 @@ for(const p of ordered){
 const role=e=>{
  const src=byUrl.get(e.from),dst=byUrl.get(e.to);
  if(src?.type==='article'&&dst?.type==='taxonomy-archive'&&src.parent_id===dst.parent_id&&src.category_id===dst.category_id)return 'SUPPORT_TO_SILO';
- if(src?.type==='article'&&src.parent_id===dst.parent_id&&dst.type==='taxonomy-parent')return 'SUPPORT_TO_PILLAR';
- if(src?.type==='taxonomy-archive'&&dst.type==='taxonomy-parent'&&src.parent_id===dst.parent_id)return 'SILO_TO_PILLAR';
- if(src?.type==='taxonomy-parent'&&dst.type==='taxonomy-archive'&&src.parent_id===dst.parent_id)return 'PILLAR_TO_SILO';
- if(src?.type==='taxonomy-parent'&&['/rental-prices/','/contact/'].includes(dst.url))return 'PILLAR_TO_COMMERCIAL';
+ if(src?.type==='article'&&dst?.url===parents.get(src.parent_id))return 'SUPPORT_TO_PILLAR';
+ if(src?.type==='taxonomy-archive'&&dst?.url===parents.get(src.parent_id))return 'SILO_TO_PILLAR';
+ if(dst?.type==='taxonomy-archive'&&src?.url===parents.get(dst.parent_id))return 'PILLAR_TO_SILO';
+ if(tax.parents.some(p=>p.url===src?.url)&&['/rental-prices/','/contact/'].includes(dst.url))return 'PILLAR_TO_COMMERCIAL';
  if(src?.type==='article'&&dst.type==='article')return 'SUPPORT_TO_SUPPORT';
  if(src?.type==='taxonomy-archive'&&dst.type==='article'&&src.category_id===dst.category_id)return 'SILO_TO_SUPPORT';
  return 'CONTEXTUAL_RELATED';
