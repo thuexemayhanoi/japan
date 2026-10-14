@@ -1,6 +1,6 @@
 // Rebuild all static HTML, canonical tags, breadcrumbs, schema and sitemap without dependencies.
 // Usage: node scripts/build.mjs
-import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {execFileSync} from 'node:child_process';
 import {validateTaxonomy,decorateTaxonomy,taxonomyMenu,parentCategorySection,categoryArchiveBody,articleCategoryTrail} from './taxonomy.mjs';
 import {validateNonPostSEO,applyNonPostSEO,renderNonPostSEO} from './nonpost-seo.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -125,4 +125,9 @@ for(const [p,s] of Object.entries(files)){
  else{fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,s,'utf8')}
 }
 if(check&&stale)process.exitCode=1;
-else console.log((check?'Verified ':'Generated ')+Object.keys(files).length+' HTML/SEO files; articles='+accepted.length);
+else {
+  // Publish the internal-link graph from the same generated HTML snapshot.
+  // Keep every future factory batch consistent without editing Post content.
+  execFileSync(process.execPath,[path.join(root,'scripts/internal-link-graph.mjs'),...(check?['--check']:[])],{stdio:'inherit'});
+  console.log((check?'Verified ':'Generated ')+Object.keys(files).length+' HTML/SEO files; articles='+accepted.length);
+}
