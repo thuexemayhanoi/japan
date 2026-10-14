@@ -2,39 +2,11 @@
   "schema_version": 1,
   "status": "READY",
   "target": 200,
-  "published": 118,
-  "remaining": 82,
+  "published": 120,
+  "remaining": 80,
   "planned": 200,
   "unplanned": 0,
   "queue": [
-    {
-      "id": "JP-0118",
-      "parent_id": "guide",
-      "category_id": "procedure",
-      "hub": "/rental-guide/",
-      "slug": "after-booking-preparation",
-      "url": "/rental-guide/after-booking-preparation/",
-      "working_title": "予約が確定した後に準備すること",
-      "primary_keyword": "予約後 準備 レンタル",
-      "intent": "informational",
-      "brief": "持ち物と当日の確認リスト。",
-      "status": "PLANNED",
-      "draft_file": "_factory/inbox/JP-0118.json"
-    },
-    {
-      "id": "JP-0120",
-      "parent_id": "guide",
-      "category_id": "inspection",
-      "hub": "/rental-guide/",
-      "slug": "brake-check-guide",
-      "url": "/rental-guide/brake-check-guide/",
-      "working_title": "ブレーキの効きを確認する方法",
-      "primary_keyword": "ブレーキ 確認 方法",
-      "intent": "informational",
-      "brief": "レバーの遊びと制動テスト。",
-      "status": "PLANNED",
-      "draft_file": "_factory/inbox/JP-0120.json"
-    },
     {
       "id": "JP-0121",
       "parent_id": "guide",
@@ -48,6 +20,34 @@
       "brief": "夜間と雨天に向けた確認方法。",
       "status": "PLANNED",
       "draft_file": "_factory/inbox/JP-0121.json"
+    },
+    {
+      "id": "JP-0122",
+      "parent_id": "guide",
+      "category_id": "inspection",
+      "hub": "/rental-guide/",
+      "slug": "tire-wheel-check",
+      "url": "/rental-guide/tire-wheel-check/",
+      "working_title": "タイヤとホイールの点検手順",
+      "primary_keyword": "タイヤ ホイール 点検",
+      "intent": "informational",
+      "brief": "空気圧と損傷の見方。",
+      "status": "PLANNED",
+      "draft_file": "_factory/inbox/JP-0122.json"
+    },
+    {
+      "id": "JP-0123",
+      "parent_id": "guide",
+      "category_id": "inspection",
+      "hub": "/rental-guide/",
+      "slug": "mirrors-horn-check",
+      "url": "/rental-guide/mirrors-horn-check/",
+      "working_title": "ミラーとクラクションの確認",
+      "primary_keyword": "ミラー クラクション 確認",
+      "intent": "informational",
+      "brief": "調整方法と視界の確保。",
+      "status": "PLANNED",
+      "draft_file": "_factory/inbox/JP-0123.json"
     }
   ]
 }
