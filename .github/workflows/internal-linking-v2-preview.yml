@@ -1,0 +1,56 @@
+name: Japan Internal Linking V2 Preview QA (temporary)
+on:
+  push:
+    branches: [seo/japan-cluster-internal-links-v2-20261015]
+permissions:
+  contents: write
+concurrency:
+  group: japan-linking-v2-preview
+  cancel-in-progress: false
+jobs:
+  verify-and-rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify link-graph enhancements and publication safeguards
+        run: |
+          set -euo pipefail
+          node --check scripts/internal-link-graph.mjs
+          node --check scripts/qa-internal-links.mjs
+          node --check scripts/build.mjs
+          node scripts/build.mjs
+          node scripts/build.mjs --check
+          node scripts/qa-factory.mjs
+          node scripts/qa-nonpost.mjs
+          node scripts/qa-internal-links.mjs
+          node scripts/qa-calculator.mjs
+          node scripts/smoke-factory.mjs
+          node scripts/seo-audit.mjs --mode=offline
+          node scripts/qa-nonpost.mjs --guard-scope
+          test "$(jq -r .pages reports/japan-internal-link-summary.json)" = "233"
+          test "$(jq -r .articles reports/japan-internal-link-summary.json)" = "200"
+      - name: Commit verified nonpost HTML and graph then delete preview workflow
+        run: |
+          set -euo pipefail
+          git config user.name "japan-internal-linking-qa"
+          git config user.email "japan-internal-linking-qa@users.noreply.github.com"
+          git add -u
+          git add -- reports/japan-internal-link-opportunities.csv
+          git rm -- .github/workflows/internal-linking-v2-preview.yml
+          git diff --cached --name-only > /tmp/changed.txt
+          if grep -E '^(content/articles/|_factory/|data/|CNAME$|sitemap.xml$)' /tmp/changed.txt; then
+            echo "SAFE_STOP: protected files changed"; exit 1
+          fi
+          if git diff --cached --quiet; then echo "No output changes"; exit 0; fi
+          git commit -m "build(japan): regenerate 33 nonpost pages and genuine internal link opportunities"
+          git fetch --no-tags origin seo/japan-cluster-internal-links-v2-20261015
+          if [ "$(git rev-parse origin/seo/japan-cluster-internal-links-v2-20261015)" != "$(git rev-parse HEAD^)" ]; then
+            echo "SAFE_STOP branch changed during build"; exit 1
+          fi
+          git push origin HEAD:seo/japan-cluster-internal-links-v2-20261015
