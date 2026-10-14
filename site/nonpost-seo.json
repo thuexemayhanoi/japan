@@ -106,6 +106,14 @@
         {
           "url": "/rental-prices/",
           "label": "車種別のレンタル料金"
+        },
+        {
+          "url": "/categories/motorbikes/50cc/",
+          "label": "50ccクラスの詳しい利用情報"
+        },
+        {
+          "url": "/categories/motorbikes/electric/",
+          "label": "電動バイクの充電・利用ガイド"
         }
       ]
     },
@@ -220,6 +228,14 @@
         {
           "url": "/contact/",
           "label": "希望日数で見積もりを依頼"
+        },
+        {
+          "url": "/categories/prices/delivery/",
+          "label": "受取・返却と追加費用の確認"
+        },
+        {
+          "url": "/categories/prices/comparison/",
+          "label": "車種別・期間別の料金比較"
         }
       ]
     },
@@ -258,6 +274,14 @@
         {
           "url": "/rental-prices/",
           "label": "レンタル費用の目安"
+        },
+        {
+          "url": "/categories/guide/city-driving/",
+          "label": "ハノイ市内を運転する際の注意"
+        },
+        {
+          "url": "/categories/guide/returns/",
+          "label": "返却手順とトラブルへの対応"
         }
       ]
     },
@@ -462,6 +486,14 @@
         {
           "url": "/contact/",
           "label": "ロンビエンの店舗所在地を確認"
+        },
+        {
+          "url": "/categories/areas/westlake/",
+          "label": "西湖・バーディンの移動案内"
+        },
+        {
+          "url": "/categories/areas/stations/",
+          "label": "駅周辺と公共交通へのアクセス"
         }
       ]
     },

@@ -36,7 +36,11 @@ for(const [url,entry] of effective){
  if(url!=='/'&&!destinations.has('/'))noHome++;
 }
 for(const p of tax.parents){
- const row=matrix.pages[p.url];if(!row||!row.links?.some(l=>l.url.startsWith('/categories/'+p.id+'/')))throw Error('Pillar missing supporting Silo links '+p.url);
+ const row=matrix.pages[p.url];if(!row)throw Error('Missing Pillar '+p.url);
+ for(const child of p.children){
+  const archive='/categories/'+p.id+'/'+child.id+'/';
+  if(indexable.has(archive)&&!row.links?.some(l=>l.url===archive))throw Error('Pillar missing published child Silo '+p.url+' -> '+archive);
+ }
 }
 // The vehicle-selection card must lead to a published vehicle guide, not a price page.
 if(indexable.has('/categories/motorbikes/semiautomatic/')){
@@ -49,4 +53,8 @@ if(indexable.has('/categories/motorbikes/semiautomatic/')){
 const summary=read('reports/japan-internal-link-summary.json');
 if(summary.non_posts!==effective.length||summary.articles!==published.length||summary.unresolved_internal_links!==0)throw Error('Graph does not represent current published snapshot');
 if(summary.destination_home_from_nonpost_content.length)throw Error('Homepage receiving unjustified content backlinks');
+if(!summary.role_counts||summary.role_counts.SILO_TO_PILLAR<inCluster)throw Error('Missing semantically classified Silo → Pillar edges');
+if(!Number.isInteger(summary.recommended_missing_nonpost_links)||summary.recommended_missing_nonpost_links<0)throw Error('Graph missing true opportunity counters');
+const graphCSV=fs.readFileSync(path.join(root,'reports/japan-internal-link-graph-nonpost.csv'),'utf8');
+if(!graphCSV.includes('incoming_source_anchor_pairs')||!graphCSV.includes('recommended_missing_link'))throw Error('Incomplete main-page link graph columns');
 console.log('JAPAN_INTERNAL_LINK_QA_PASS nonpost='+effective.length+' article='+published.length+' live_silos='+inCluster+' homepage_spam=0');

@@ -4,10 +4,21 @@
   "pages": 233,
   "articles": 200,
   "non_posts": 33,
-  "all_unique_edges": 9608,
-  "contextual_edges": 1698,
-  "nonpost_contextual_edges": 573,
+  "all_unique_edges": 9616,
+  "contextual_edges": 1706,
+  "nonpost_contextual_edges": 581,
   "destination_home_from_nonpost_content": [],
   "unresolved_internal_links": 0,
+  "recommended_missing_nonpost_links": 12,
+  "role_counts": {
+    "CONTEXTUAL_RELATED": 347,
+    "PILLAR_TO_SILO": 39,
+    "PILLAR_TO_COMMERCIAL": 5,
+    "SUPPORT_TO_SILO": 196,
+    "SUPPORT_TO_SUPPORT": 869,
+    "SUPPORT_TO_PILLAR": 16,
+    "SILO_TO_PILLAR": 38,
+    "SILO_TO_SUPPORT": 196
+  },
   "generated_from": "published HTML after node scripts/build.mjs"
 }
