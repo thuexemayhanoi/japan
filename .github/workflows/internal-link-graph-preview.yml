@@ -1,0 +1,54 @@
+name: Japan Internal Link Graph Preview (one-time)
+on:
+  push:
+    branches: [seo/japan-internal-link-graph-20261015]
+permissions:
+  contents: write
+concurrency:
+  group: japan-link-graph-preview
+  cancel-in-progress: false
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build scoped graph and run end-to-end SEO QA
+        run: |
+          set -euo pipefail
+          node --check scripts/internal-link-graph.mjs
+          node --check scripts/qa-internal-links.mjs
+          node --check scripts/build.mjs
+          node scripts/build.mjs
+          node scripts/build.mjs --check
+          node scripts/qa-factory.mjs
+          node scripts/qa-nonpost.mjs
+          node scripts/qa-internal-links.mjs
+          node scripts/qa-calculator.mjs
+          node scripts/smoke-factory.mjs
+          node scripts/seo-audit.mjs --mode=offline
+          node scripts/qa-nonpost.mjs --guard-scope
+      - name: Commit generated nonpost HTML and link graph only
+        run: |
+          set -euo pipefail
+          git config user.name "japan-seo-link-graph"
+          git config user.email "japan-seo-link-graph@users.noreply.github.com"
+          git add -u
+          git add -- reports/japan-internal-link-graph.csv reports/japan-internal-link-graph-nonpost.csv reports/japan-internal-link-context-edges.csv reports/japan-internal-link-summary.json
+          git rm -- .github/workflows/internal-link-graph-preview.yml
+          git diff --cached --name-only > /tmp/staged.txt
+          if grep -E '^(content/articles/|_factory/|data/|CNAME$|sitemap.xml$)' /tmp/staged.txt; then
+            echo "SAFE_STOP protected path staged"; exit 1
+          fi
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "build(japan): publish 33 contextual nonpost links and complete URL graph"
+          git fetch --no-tags origin seo/japan-internal-link-graph-20261015
+          if [ "$(git rev-parse origin/seo/japan-internal-link-graph-20261015)" != "$(git rev-parse HEAD^)" ]; then
+            echo "SAFE_STOP branch moved after preview build"; exit 1
+          fi
+          git push origin HEAD:seo/japan-internal-link-graph-20261015
