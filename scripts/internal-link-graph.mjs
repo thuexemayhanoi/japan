@@ -47,7 +47,7 @@ for(const p of ordered){
 if(unknown.length)throw Error('Broken internal links '+JSON.stringify(unknown.slice(0,8)));
 const inbound=new Map(ordered.map(p=>[p.url,[]]));
 for(const e of edges)inbound.get(e.to).push(e);
-const group=p=>p.type==='article'?p.parent_id:p.url.startsWith('/categories/')?p.parent_id:tax.parents.find(x=>x.url===p.url)?.id||p.url.startsWith('/bike-types/')?'motorbikes':p.url.startsWith('/rental-guide/')?'guide':p.url.startsWith('/rental-prices/')?'prices':p.url.startsWith('/hanoi-areas/')?'areas':p.url.startsWith('/routes-mobility/')?'routes':p.url==='/'?'commercial':'trust';
+const group=p=>p.type==='article'?p.parent_id:p.url.startsWith('/categories/')?p.parent_id:(tax.parents.find(x=>x.url===p.url)?.id||(p.url.startsWith('/bike-types/')?'motorbikes':p.url.startsWith('/rental-guide/')?'guide':p.url.startsWith('/rental-prices/')?'prices':p.url.startsWith('/hanoi-areas/')?'areas':p.url.startsWith('/routes-mobility/')?'routes':p.url==='/'?'commercial':'trust'));
 function recommendation(p){
  if(p.type==='article'){
   const parent=tax.parents.find(x=>x.id===p.parent_id),candidate=parent&&archiveUrl(parent,{id:p.category_id});
@@ -73,8 +73,8 @@ for(const p of ordered){
  if(p.type!=='article')shortRows.push([p.url,p.type||'page',group(p),listA.length,listB.length,rec.url,rec.anchor,rec.action]);
 }
 const contextEdges=[['source_url','target_url','anchor_text','zone','source_cluster','target_cluster'],...contextual.map(e=>[e.from,e.to,e.anchor,e.zone,group(ordered.find(p=>p.url===e.from)),group(ordered.find(p=>p.url===e.to))])];
-const summary={domain:'https://ja.rentbikehanoi.com/',scope:'233 published pages, no drafts',pages:ordered.length,articles:articles.length,non_posts:ordered.length-articles.length,all_unique_edges:edges.length,contextual_edges:contextual.length,nonpost_contextual_edges:contextual.filter(e=>ordered.find(p=>p.url===e.from)?.type!=='article').length,destination_home_from_nonpost_content:contextual.filter(e=>e.to==='/'&&ordered.find(p=>p.url===e.from)?.type!=='article').map(e=>e.from),unresolved_internal_links:unknown.length,generated_from:'published HTML after node scripts/build.mjs'};
-if(summary.non_posts!==33||summary.articles!==200)throw Error('Unexpected Japan publication snapshot '+JSON.stringify(summary));
+const summary={domain:'https://ja.rentbikehanoi.com/',scope:'all currently published URLs; no drafts',pages:ordered.length,articles:articles.length,non_posts:ordered.length-articles.length,all_unique_edges:edges.length,contextual_edges:contextual.length,nonpost_contextual_edges:contextual.filter(e=>ordered.find(p=>p.url===e.from)?.type!=='article').length,destination_home_from_nonpost_content:contextual.filter(e=>e.to==='/'&&ordered.find(p=>p.url===e.from)?.type!=='article').map(e=>e.from),unresolved_internal_links:unknown.length,generated_from:'published HTML after node scripts/build.mjs'};
+if(summary.pages!==urls.size||summary.articles!==published.length)throw Error('Unexpected Japan publication snapshot '+JSON.stringify(summary));
 if(summary.destination_home_from_nonpost_content.length)throw Error('Unexpected blanket homepage links '+JSON.stringify(summary.destination_home_from_nonpost_content));
 const outputs={
  'reports/japan-internal-link-graph.csv':toCSV(fullRows),
