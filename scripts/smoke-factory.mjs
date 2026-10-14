@@ -7,6 +7,8 @@ try{
  fs.cpSync(root,tmp,{recursive:true,filter:s=>!s.split(path.sep).includes('.git')&&!s.split(path.sep).includes('node_modules')});
  const s=JSON.parse(read('data/factory-state.json'));s.enabled=false;s.blocked=false;s.published_ids=[];s.last_error=null;s.last_run=null;
  fs.writeFileSync(path.join(tmp,'data/factory-state.json'),JSON.stringify(s,null,2)+'\n');
+ const planned=JSON.parse(read('data/editorial-plan.json')).articles.length;
+ fs.writeFileSync(path.join(tmp,'data/writer-queue.json'),JSON.stringify({schema_version:1,status:'PAUSED',target:200,published:0,remaining:200,planned,unplanned:200-planned,queue:[]},null,2)+'\n');
  fs.rmSync(path.join(tmp,'content/articles'),{force:true,recursive:true});
  fs.rmSync(path.join(tmp,'_factory/inbox'),{force:true,recursive:true});fs.mkdirSync(path.join(tmp,'_factory/inbox'),{recursive:true});
  run('scripts/build.mjs');

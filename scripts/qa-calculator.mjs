@@ -1,5 +1,5 @@
 // Checks calculator math, page semantics, source-of-truth and unaffected SEO inventory.
-import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {createRequire} from 'node:module';
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {createRequire} from 'node:module';import {decorateTaxonomy} from './taxonomy.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const config=JSON.parse(read('site/data.json')).rentalCalculator;
@@ -34,9 +34,13 @@ check(html.includes('料金シミュレーター')&&html.includes('保証金'),'
 check(css.includes('.hero-calculator')&&css.includes('@media(max-width:460px)'),'Responsive calculator styling absent');
 check(js.includes('aria-invalid')&&js.includes('addEventListener'),'Calculator accessible update unavailable');
 check(html.includes('rel="canonical" href="https://ja.rentbikehanoi.com/"'),'Home canonical drift');
-check((read('sitemap.xml').match(/<url>/g)||[]).length===12,'Sitemap URL count changed');
-check(state.enabled===false&&state.published_ids.length===0&&queue.status==='PAUSED','Factory must stay PAUSED, 0 articles');
+const dataJson=JSON.parse(read('site/data.json')),taxJson=JSON.parse(read('site/taxonomy.json'));
+const planRows=JSON.parse(read('data/editorial-plan.json')).articles;
+const publishedArticles=state.published_ids.map(id=>{const p=planRows.find(a=>a.id===id);const article=JSON.parse(read('content/articles/'+id+'.json'));return {...p,title:article.title,intro:article.intro}});
+const allPages=dataJson.pages.map(x=>({...x}));decorateTaxonomy(taxJson,allPages,publishedArticles);allPages.push(...publishedArticles);
+check((read('sitemap.xml').match(/<url>/g)||[]).length===allPages.length,'Sitemap URL count does not match indexable pages');
+check(state.blocked===false&&queue.published===state.published_ids.length,'Factory/queue state inconsistent');
 const prices=read('rental-prices/index.html');
 check(prices.includes('150,000 VND')&&prices.includes('200,000 VND'),'Home calculator should match prices page');
 if(problems.length){console.error(problems.join('\n'));process.exit(1)}
-console.log('JAPAN_CALCULATOR_QA_PASS models=2 daily=150000/200000 days=1-6 quote=7-30 sitemap=12 factory=PAUSED');
+console.log('JAPAN_CALCULATOR_QA_PASS models=2 daily=150000/200000 days=1-6 quote=7-30 sitemap='+allPages.length+' published='+state.published_ids.length);
