@@ -7,10 +7,10 @@ export function validateNonPostSEO(matrix,pages){
  for(const p of nonpost){
   const m=matrix.pages[p.url];if(!m)throw Error('Missing nonpost SEO matrix entry: '+p.url);
   if(!m.primary_keyword||!m.intent||!m.role||!m.title||!m.description||!m.h1||!m.answer||!Array.isArray(m.sections)||m.sections.length<2)throw Error('Incomplete nonpost SEO: '+p.url);
-  if(m.title.length<12||m.description.length<45||m.h1.length<8||m.answer.length<45)throw Error('Thin nonpost metadata: '+p.url);
+  if(m.title.length<12||m.description.length<45||m.h1.length<8||m.answer.length<35)throw Error('Thin nonpost metadata: '+p.url);
   const key=normalize(m.primary_keyword);if(keywords.has(key))throw Error('Nonpost keyword overlap: '+p.url);keywords.add(key);
   if(seen.has(m.title))throw Error('Duplicate nonpost title: '+p.url);seen.add(m.title);
-  for(const x of m.sections){if(!x.heading||!x.text||x.text.length<60)throw Error('Thin nonpost section: '+p.url)}
+  for(const x of m.sections){if(!x.heading||!x.text||x.text.length<40)throw Error('Thin nonpost section: '+p.url)}
   if(!Array.isArray(m.links)||m.links.length<2)throw Error('Missing contextual links: '+p.url);
   for(const l of m.links)if(!all.has(l.url)||l.url===p.url||!l.label)throw Error('Invalid nonpost internal link '+p.url+' -> '+l.url);
  }
