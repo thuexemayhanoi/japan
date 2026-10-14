@@ -50,7 +50,9 @@ const known=new Set(pages.map(p=>p.url)),incoming=new Map(pages.map(p=>[p.url,0]
 validate(known.size===pages.length,'P0','technical','duplicate-url','',pages.length-known.size+' duplicates','Resolve primary URL conflicts after review');
 validate(config.domain===domain&&site.site.base===domain+'/','P0','technical','wrong-domain','',site.site.base,'Keep canonical Japanese origin');
 validate(read('CNAME').trim()==='ja.rentbikehanoi.com','P0','technical','wrong-cname','/CNAME',read('CNAME').trim(),'Preserve DNS/CNAME');
-validate(!state.enabled&&queue.status==='PAUSED','P0','factory','unapproved-factory','',JSON.stringify({enabled:state.enabled,status:queue.status}),'STOP / disable publishing pending explicit approval');
+validate(!(!state.enabled&&(queue.status!=='PAUSED'||queue.queue.length)),'P0','factory','unapproved-factory','',JSON.stringify({enabled:state.enabled,status:queue.status,queued:queue.queue.length}),'Writer queue must stay paused while factory is disabled');
+const hasPendingDraft=plan.some(p=>fs.existsSync(path.join(root,'_factory/inbox/'+p.id+'.json')));
+if(state.enabled&&!state.published_ids.length&&!hasPendingDraft)issue('P0','factory','missing-first-batch-drafts','',JSON.stringify({enabled:state.enabled,published:0}),'Enabled factory with zero published articles requires pending first-batch drafts');
 validate(queue.published===state.published_ids.length&&queue.remaining===200-state.published_ids.length,'P1','factory','queue-count-drift','',JSON.stringify(queue).slice(0,160),'Reconcile writer queue counts');
 const keywords=new Map();
 for(const p of plan){
@@ -128,7 +130,7 @@ const measured={
 };
 if(!site.site.googleSiteVerification)issue('P2','measurement','gsc-ownership','/', 'No Japanese GSC meta code in site config','Verify ja.rentbikehanoi.com via Search Console and submit sitemap');
 if(!fs.existsSync(path.join(root,'assets/images')))issue('P2','trust','original-images','/','No original image library found in repo','Add real photographed motorcycles with permission and descriptive alt text');
-if(!state.published_ids.length)issue('P3','content','no-published-articles','/', '0 JP articles; 24 briefs are not live','Publish only reviewed Japanese articles after explicit approval');
+if(!state.published_ids.length)issue('P3','content','no-published-articles','/', '0 JP articles; '+plan.length+' briefs are not live','Publish only reviewed Japanese articles after explicit approval');
 async function checkLive(url,kind){
  try{
   const res=await fetch(url,{signal:AbortSignal.timeout(10000),redirect:'manual',headers:{'user-agent':'JapanSiteSEOAudit/2.0 (read-only)'}});
