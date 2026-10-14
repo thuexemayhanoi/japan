@@ -26,6 +26,7 @@ if(process.argv.includes('--guard-scope')){
  const changed=execFileSync('git',['diff','--name-only'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(Boolean);
  const allowed=new Set(nonpost.map(p=>p.url==='/'?'index.html':p.url.slice(1)+'index.html'));
  allowed.add('search-index.json');
+ for(const p of ['reports/japan-internal-link-context-edges.csv','reports/japan-internal-link-graph-nonpost.csv','reports/japan-internal-link-graph.csv','reports/japan-internal-link-summary.json'])allowed.add(p);
  const forbidden=changed.filter(p=>!allowed.has(p));
  if(forbidden.length)throw Error('SCOPE_STOP modified generated article, Factory or protected file: '+forbidden.join(', '));
  console.log('JAPAN_NONPOST_SCOPE_PASS generated='+changed.length+' protected_articles='+published.length);
