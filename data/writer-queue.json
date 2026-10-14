@@ -1,39 +1,10 @@
 {
   "schema_version": 1,
-  "status": "READY",
+  "status": "TARGET_REACHED",
   "target": 200,
-  "published": 198,
-  "remaining": 2,
+  "published": 200,
+  "remaining": 0,
   "planned": 200,
   "unplanned": 0,
-  "queue": [
-    {
-      "id": "JP-0199",
-      "parent_id": "routes",
-      "category_id": "outside",
-      "hub": "/routes-mobility/",
-      "slug": "mountain-road-safety",
-      "url": "/routes-mobility/mountain-road-safety/",
-      "working_title": "山道を走るときの安全の基本",
-      "primary_keyword": "山道 走行 安全",
-      "intent": "informational",
-      "brief": "カーブと路面の注意点。",
-      "status": "PLANNED",
-      "draft_file": "_factory/inbox/JP-0199.json"
-    },
-    {
-      "id": "JP-0200",
-      "parent_id": "routes",
-      "category_id": "outside",
-      "hub": "/routes-mobility/",
-      "slug": "late-return-from-day-trip",
-      "url": "/routes-mobility/late-return-from-day-trip/",
-      "working_title": "帰りが遅くなるときの連絡のしかた",
-      "primary_keyword": "帰り 遅い 連絡",
-      "intent": "informational",
-      "brief": "営業時間と返却時刻の調整。",
-      "status": "PLANNED",
-      "draft_file": "_factory/inbox/JP-0200.json"
-    }
-  ]
+  "queue": []
 }
