@@ -1,6 +1,6 @@
 // Non-post SEO layer. Render only currently existing public pages; never create archives or change article HTML.
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-const normalize=s=>String(s).normalize('NFKC').toLocaleLowerCase('ja').replace(/[\\s\\p{P}\\p{S}]+/gu,'');
+const normalize=s=>String(s).normalize('NFKC').toLocaleLowerCase('ja').replace(/[^\p{L}\p{N}]+/gu,'');
 export function validateNonPostSEO(matrix,pages){
  if(matrix?.locale!=='ja-JP'||matrix?.domain!=='https://ja.rentbikehanoi.com')throw Error('Nonpost locale/domain mismatch');
  const all=new Set(pages.map(p=>p.url)),nonpost=pages.filter(p=>p.type!=='article'),seen=new Set(),keywords=new Set();
