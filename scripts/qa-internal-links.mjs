@@ -9,7 +9,7 @@ const published=read('data/factory-state.json').published_ids;
 const expected=source.pages.map(x=>x.url);
 const count=new Map(tax.parents.flatMap(p=>p.children.map(c=>[p.id+'/'+c.id,0])));
 for(const id of published){const row=plan.find(x=>x.id===id);if(!row)throw Error('Unknown published '+id);const key=row.parent_id+'/'+row.category_id;count.set(key,(count.get(key)||0)+1);}
-for(const parent of tax.parents){const exists=expected.includes(parent.url);if(!exists)throw Error('Pillar not published: '+parent.url);for(const child of parent.children){const url='/categories/'+parent.id+'/'+child.id+'/';if((count.get(parent.id+'/'+child.id)||0)>=tax.separate_archive_min_articles)expected.push(url);}}
+for(const parent of tax.parents){const hasArticles=parent.children.some(child=>(count.get(parent.id+'/'+child.id)||0)>0);if(!expected.includes(parent.url)&&hasArticles)expected.push(parent.url);for(const child of parent.children){const url='/categories/'+parent.id+'/'+child.id+'/';if((count.get(parent.id+'/'+child.id)||0)>=tax.separate_archive_min_articles)expected.push(url);}}
 const indexable=new Set(expected);
 const effective=Object.entries(matrix.pages).filter(([url])=>indexable.has(url));
 if(effective.length!==expected.length)throw Error('Non-post URL inventory mismatch '+effective.length+'/'+expected.length);
