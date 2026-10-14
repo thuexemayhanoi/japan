@@ -1,0 +1,44 @@
+name: Japan one-time stuck Pages deployment recovery
+on:
+  push:
+    branches: [ops/japan-pages-unblock-20261014]
+permissions:
+  contents: read
+  pages: write
+jobs:
+  inspect-and-unblock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Inspect exact stale deployment and cancel only when still active
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          repo="thuexemayhanoi/japan"
+          stale="cd403c732b1cf33cf3f6c4482335bfc905aefaec"
+          url="https://api.github.com/repos/$repo/pages/deployments/$stale"
+          status=$(curl -fsSL \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "$url" | jq -r '.status // empty')
+          echo "STUCK_PAGES_DEPLOYMENT_STATUS=$status"
+          case "$status" in
+            pending|queued|in_progress|in-progress|working|building|created|creating)
+              echo "Cancelling EXACT non-terminal Pages deployment $stale"
+              curl -fsSL -o /dev/null -X POST \
+                -H "Authorization: Bearer $GH_TOKEN" \
+                -H "Accept: application/vnd.github+json" \
+                -H "X-GitHub-Api-Version: 2022-11-28" \
+                "$url/cancel"
+              echo "PAGES_STALE_CANCEL_REQUEST_SUCCESS"
+              ;;
+            succeed|success|cancelled|canceled|failed|failure)
+              echo "Already terminal; skip cancellation: $status"
+              ;;
+            *)
+              echo "SAFE_STOP: unknown Pages deployment status; no change"
+              exit 1
+              ;;
+          esac
