@@ -4,9 +4,9 @@
   "pages": 233,
   "articles": 200,
   "non_posts": 33,
-  "all_unique_edges": 9607,
-  "contextual_edges": 1697,
-  "nonpost_contextual_edges": 572,
+  "all_unique_edges": 9608,
+  "contextual_edges": 1698,
+  "nonpost_contextual_edges": 573,
   "destination_home_from_nonpost_content": [],
   "unresolved_internal_links": 0,
   "generated_from": "published HTML after node scripts/build.mjs"

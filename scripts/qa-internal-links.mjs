@@ -38,6 +38,14 @@ for(const [url,entry] of effective){
 for(const p of tax.parents){
  const row=matrix.pages[p.url];if(!row||!row.links?.some(l=>l.url.startsWith('/categories/'+p.id+'/')))throw Error('Pillar missing supporting Silo links '+p.url);
 }
+// The vehicle-selection card must lead to a published vehicle guide, not a price page.
+if(indexable.has('/categories/motorbikes/semiautomatic/')){
+ for(const file of ['index.html','bike-types/index.html']){
+  const html=fs.readFileSync(path.join(root,file),'utf8');
+  if(!/<h3>セミオート車<\/h3>[\s\S]{0,300}href="\/categories\/motorbikes\/semiautomatic\/"/.test(html))
+   throw Error('Semiautomatic card target mismatch: '+file);
+ }
+}
 const summary=read('reports/japan-internal-link-summary.json');
 if(summary.non_posts!==effective.length||summary.articles!==published.length||summary.unresolved_internal_links!==0)throw Error('Graph does not represent current published snapshot');
 if(summary.destination_home_from_nonpost_content.length)throw Error('Homepage receiving unjustified content backlinks');
