@@ -113,6 +113,14 @@ const role=e=>{
  return 'CONTEXTUAL_RELATED';
 };
 const contextEdges=[['source_url','target_url','anchor_text','zone','source_cluster','target_cluster','edge_role'],...contextual.map(e=>[e.from,e.to,e.anchor,e.zone,group(byUrl.get(e.from)),group(byUrl.get(e.to)),role(e)])];
+const opportunityRows=[['priority','source_url','cluster','incoming_contextual_urls','outgoing_contextual_urls','recommended_missing_url','recommended_anchor','reason','action'],...ordered.filter(p=>p.type!=='article').map(p=>{
+ const rec=recommendation(p);
+ if(rec.action!=='REVIEW_CONTEXTUAL_ADD')return null;
+ const incomingLinks=(inbound.get(p.url)||[]).filter(e=>e.zone==='contextual');
+ const outgoingLinks=(bySource.get(p.url)||[]).filter(e=>e.zone==='contextual');
+ const unique=arr=>new Set(arr.map(x=>x.from||x.to)).size;
+ return [p.type==='taxonomy-parent'||['/bike-types/','/rental-prices/','/rental-guide/','/hanoi-areas/','/routes-mobility/'].includes(p.url)?'P1':'P2',p.url,group(p),unique(incomingLinks),new Set(outgoingLinks.map(x=>x.to)).size,rec.url,rec.anchor,rec.reason,rec.action];
+}).filter(Boolean)];
 const summary={domain:'https://ja.rentbikehanoi.com/',scope:'all currently published URLs; no drafts',pages:ordered.length,articles:articles.length,non_posts:ordered.length-articles.length,all_unique_edges:edges.length,contextual_edges:contextual.length,nonpost_contextual_edges:contextual.filter(e=>ordered.find(p=>p.url===e.from)?.type!=='article').length,destination_home_from_nonpost_content:contextual.filter(e=>e.to==='/'&&ordered.find(p=>p.url===e.from)?.type!=='article').map(e=>e.from),unresolved_internal_links:unknown.length,recommended_missing_nonpost_links:ordered.filter(p=>p.type!=='article'&&recommendation(p).action==='REVIEW_CONTEXTUAL_ADD').length,role_counts:contextual.reduce((a,e)=>(a[role(e)]=(a[role(e)]||0)+1,a),{}),generated_from:'published HTML after node scripts/build.mjs'};
 if(summary.pages!==urls.size||summary.articles!==published.length)throw Error('Unexpected Japan publication snapshot '+JSON.stringify(summary));
 if(summary.destination_home_from_nonpost_content.length)throw Error('Unexpected blanket homepage links '+JSON.stringify(summary.destination_home_from_nonpost_content));
@@ -120,6 +128,7 @@ const outputs={
  'reports/japan-internal-link-graph.csv':toCSV(fullRows),
  'reports/japan-internal-link-graph-nonpost.csv':toCSV(shortRows),
  'reports/japan-internal-link-context-edges.csv':toCSV(contextEdges),
+ 'reports/japan-internal-link-opportunities.csv':toCSV(opportunityRows),
  'reports/japan-internal-link-summary.json':JSON.stringify(summary,null,2)+'\n'
 };
 const check=process.argv.includes('--check');let drift=[];
