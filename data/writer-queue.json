@@ -2,52 +2,38 @@
   "schema_version": 1,
   "status": "READY",
   "target": 200,
-  "published": 195,
-  "remaining": 5,
+  "published": 198,
+  "remaining": 2,
   "planned": 200,
   "unplanned": 0,
   "queue": [
     {
-      "id": "JP-0196",
-      "parent_id": "routes",
-      "category_id": "alternatives",
-      "hub": "/routes-mobility/",
-      "slug": "when-not-to-ride",
-      "url": "/routes-mobility/when-not-to-ride/",
-      "working_title": "バイクに乗らないほうがいい日",
-      "primary_keyword": "バイク 乗らない 判断",
-      "intent": "informational",
-      "brief": "体調と経験による判断基準。",
-      "status": "PLANNED",
-      "draft_file": "_factory/inbox/JP-0196.json"
-    },
-    {
-      "id": "JP-0197",
+      "id": "JP-0199",
       "parent_id": "routes",
       "category_id": "outside",
       "hub": "/routes-mobility/",
-      "slug": "out-of-city-permission",
-      "url": "/routes-mobility/out-of-city-permission/",
-      "working_title": "市外への持ち出し規定の確認",
-      "primary_keyword": "市外 持ち出し 規定",
+      "slug": "mountain-road-safety",
+      "url": "/routes-mobility/mountain-road-safety/",
+      "working_title": "山道を走るときの安全の基本",
+      "primary_keyword": "山道 走行 安全",
       "intent": "informational",
-      "brief": "契約範囲と距離制限の確認。",
+      "brief": "カーブと路面の注意点。",
       "status": "PLANNED",
-      "draft_file": "_factory/inbox/JP-0197.json"
+      "draft_file": "_factory/inbox/JP-0199.json"
     },
     {
-      "id": "JP-0198",
+      "id": "JP-0200",
       "parent_id": "routes",
       "category_id": "outside",
       "hub": "/routes-mobility/",
-      "slug": "day-trip-distance-planning",
-      "url": "/routes-mobility/day-trip-distance-planning/",
-      "working_title": "郊外への日帰り距離の考え方",
-      "primary_keyword": "日帰り 距離 郊外",
+      "slug": "late-return-from-day-trip",
+      "url": "/routes-mobility/late-return-from-day-trip/",
+      "working_title": "帰りが遅くなるときの連絡のしかた",
+      "primary_keyword": "帰り 遅い 連絡",
       "intent": "informational",
-      "brief": "距離と時間の現実的な配分。",
+      "brief": "営業時間と返却時刻の調整。",
       "status": "PLANNED",
-      "draft_file": "_factory/inbox/JP-0198.json"
+      "draft_file": "_factory/inbox/JP-0200.json"
     }
   ]
 }
