@@ -1,10 +1,53 @@
 {
   "schema_version": 1,
-  "status": "PAUSED",
+  "status": "READY",
   "target": 200,
   "published": 0,
   "remaining": 200,
-  "planned": 24,
-  "unplanned": 176,
-  "queue": []
+  "planned": 200,
+  "unplanned": 0,
+  "queue": [
+    {
+      "id": "JP-0001",
+      "parent_id": "guide",
+      "category_id": "procedure",
+      "hub": "/rental-guide/",
+      "slug": "renting-motorbike-hanoi",
+      "url": "/rental-guide/renting-motorbike-hanoi/",
+      "working_title": "ハノイでバイクを借りる手順と事前確認",
+      "primary_keyword": "ハノイ バイク レンタル 手順",
+      "intent": "informational",
+      "brief": "手続きから受取、点検、返却までの基本フロー。",
+      "status": "PLANNED",
+      "draft_file": "_factory/inbox/JP-0001.json"
+    },
+    {
+      "id": "JP-0002",
+      "parent_id": "guide",
+      "category_id": "procedure",
+      "hub": "/rental-guide/",
+      "slug": "rental-documents",
+      "url": "/rental-guide/rental-documents/",
+      "working_title": "バイクレンタルに必要な書類と確認事項",
+      "primary_keyword": "ベトナム バイク レンタル 必要書類",
+      "intent": "commercial_investigation",
+      "brief": "運転資格、身分証、原本の取り扱い。",
+      "status": "PLANNED",
+      "draft_file": "_factory/inbox/JP-0002.json"
+    },
+    {
+      "id": "JP-0003",
+      "parent_id": "guide",
+      "category_id": "inspection",
+      "hub": "/rental-guide/",
+      "slug": "check-motorbike-before-renting",
+      "url": "/rental-guide/check-motorbike-before-renting/",
+      "working_title": "レンタルバイクの受取前点検チェックリスト",
+      "primary_keyword": "レンタル バイク 点検",
+      "intent": "commercial_investigation",
+      "brief": "タイヤ、ブレーキ、ライト、傷の確認。",
+      "status": "PLANNED",
+      "draft_file": "_factory/inbox/JP-0003.json"
+    }
+  ]
 }
