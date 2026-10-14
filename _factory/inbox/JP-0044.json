@@ -49,11 +49,11 @@
     }
   ],
   "related": [
-    "https://ja.rentbikehanoi.com/bike-types/honda-wave-rental/",
-    "https://ja.rentbikehanoi.com/bike-types/scooter-or-semiautomatic-choice/",
-    "https://ja.rentbikehanoi.com/bike-types/vietnam-bike-terms/",
-    "https://ja.rentbikehanoi.com/bike-types/honda-vision-rental/",
-    "https://ja.rentbikehanoi.com/rental-guide/check-motorbike-before-renting/"
+    "/bike-types/honda-wave-rental/",
+    "/bike-types/scooter-or-semiautomatic-choice/",
+    "/bike-types/vietnam-bike-terms/",
+    "/bike-types/honda-vision-rental/",
+    "/rental-guide/check-motorbike-before-renting/"
   ],
   "source_urls": [
     "https://thuexemaynguyentu.com/",

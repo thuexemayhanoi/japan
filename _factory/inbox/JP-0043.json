@@ -49,12 +49,12 @@
     }
   ],
   "related": [
-    "https://ja.rentbikehanoi.com/bike-types/scooter-storage-luggage/",
-    "https://ja.rentbikehanoi.com/bike-types/scooter-key-management/",
-    "https://ja.rentbikehanoi.com/bike-types/scooter-parking-basics/",
-    "https://ja.rentbikehanoi.com/rental-guide/check-motorbike-before-renting/",
-    "https://ja.rentbikehanoi.com/rental-guide/return-motorbike/",
-    "https://ja.rentbikehanoi.com/bike-types/scooter-rain-riding/"
+    "/bike-types/scooter-storage-luggage/",
+    "/bike-types/scooter-key-management/",
+    "/bike-types/scooter-parking-basics/",
+    "/rental-guide/check-motorbike-before-renting/",
+    "/rental-guide/return-motorbike/",
+    "/bike-types/scooter-rain-riding/"
   ],
   "source_urls": [
     "https://thuexemaynguyentu.com/",

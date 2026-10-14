@@ -56,12 +56,12 @@
     }
   ],
   "related": [
-    "https://ja.rentbikehanoi.com/bike-types/honda-wave-rental/",
-    "https://ja.rentbikehanoi.com/bike-types/scooter-or-semiautomatic-choice/",
-    "https://ja.rentbikehanoi.com/rental-guide/check-motorbike-before-renting/",
-    "https://ja.rentbikehanoi.com/rental-guide/hanoi-city-traffic/",
-    "https://ja.rentbikehanoi.com/bike-types/scooter-low-speed-control/",
-    "https://ja.rentbikehanoi.com/bike-types/scooter-brake-types/"
+    "/bike-types/honda-wave-rental/",
+    "/bike-types/scooter-or-semiautomatic-choice/",
+    "/rental-guide/check-motorbike-before-renting/",
+    "/rental-guide/hanoi-city-traffic/",
+    "/bike-types/scooter-low-speed-control/",
+    "/bike-types/scooter-brake-types/"
   ],
   "source_urls": [
     "https://thuexemaynguyentu.com/",
