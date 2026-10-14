@@ -2,8 +2,8 @@
   "schema_version": 1,
   "status": "READY",
   "target": 200,
-  "published": 117,
-  "remaining": 83,
+  "published": 118,
+  "remaining": 82,
   "planned": 200,
   "unplanned": 0,
   "queue": [
@@ -22,20 +22,6 @@
       "draft_file": "_factory/inbox/JP-0118.json"
     },
     {
-      "id": "JP-0119",
-      "parent_id": "guide",
-      "category_id": "inspection",
-      "hub": "/rental-guide/",
-      "slug": "pickup-damage-record",
-      "url": "/rental-guide/pickup-damage-record/",
-      "working_title": "受取時に傷を記録する方法",
-      "primary_keyword": "受取 傷 記録 方法",
-      "intent": "informational",
-      "brief": "撮影と書面で残す記録の付け方。",
-      "status": "PLANNED",
-      "draft_file": "_factory/inbox/JP-0119.json"
-    },
-    {
       "id": "JP-0120",
       "parent_id": "guide",
       "category_id": "inspection",
@@ -48,6 +34,20 @@
       "brief": "レバーの遊びと制動テスト。",
       "status": "PLANNED",
       "draft_file": "_factory/inbox/JP-0120.json"
+    },
+    {
+      "id": "JP-0121",
+      "parent_id": "guide",
+      "category_id": "inspection",
+      "hub": "/rental-guide/",
+      "slug": "lights-signals-check",
+      "url": "/rental-guide/lights-signals-check/",
+      "working_title": "ライトとウインカーの点検",
+      "primary_keyword": "ライト ウインカー 点検",
+      "intent": "informational",
+      "brief": "夜間と雨天に向けた確認方法。",
+      "status": "PLANNED",
+      "draft_file": "_factory/inbox/JP-0121.json"
     }
   ]
 }
