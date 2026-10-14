@@ -1,0 +1,48 @@
+name: Japan Nonpost SEO Preview Build (temporary)
+on:
+  push:
+    branches: [seo/japan-nonpost-aeo-20261014]
+permissions:
+  contents: write
+concurrency:
+  group: japan-nonpost-preview-only
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate only deterministic non-post SEO output
+        run: |
+          set -euo pipefail
+          node --check scripts/nonpost-seo.mjs
+          node --check scripts/qa-nonpost.mjs
+          node --check scripts/build.mjs
+          node scripts/build.mjs
+          node scripts/build.mjs --check
+          node scripts/qa-factory.mjs
+          node scripts/qa-nonpost.mjs
+          node scripts/qa-nonpost.mjs --guard-scope
+          node scripts/qa-calculator.mjs
+          node scripts/smoke-factory.mjs
+          node scripts/seo-audit.mjs --mode=offline
+      - name: Commit verified preview output and remove temporary bootstrap workflow
+        run: |
+          set -euo pipefail
+          git config user.name "japan-nonpost-seo-builder"
+          git config user.email "japan-nonpost-seo-builder@users.noreply.github.com"
+          git add -u
+          git rm -- .github/workflows/nonpost-preview-build.yml
+          if git diff --cached --quiet; then echo "No generated changes"; exit 0; fi
+          git commit -m "build(japan): regenerate verified non-post SEO pages only"
+          git fetch --no-tags origin seo/japan-nonpost-aeo-20261014
+          if [ "$(git rev-parse origin/seo/japan-nonpost-aeo-20261014)" != "$(git rev-parse HEAD^)" ]; then
+            echo "SAFE_STOP: preview branch moved during QA"; exit 1
+          fi
+          git push origin HEAD:seo/japan-nonpost-aeo-20261014
