@@ -25,19 +25,19 @@
       "links": [
         {
           "url": "/rental-prices/",
-          "label": "料金と保証金"
+          "label": "ハノイの車種別レンタル料金"
         },
         {
           "url": "/bike-types/",
-          "label": "車種を選ぶ"
+          "label": "スクーター・バイクの種類"
         },
         {
           "url": "/rental-guide/",
-          "label": "レンタル手順"
+          "label": "予約前の手順と注意点"
         },
         {
           "url": "/contact/",
-          "label": "お問い合わせ"
+          "label": "Nguyễn Túに見積もりを相談"
         }
       ]
     },
@@ -63,11 +63,11 @@
       "links": [
         {
           "url": "/contact/",
-          "label": "所在地・電話番号"
+          "label": "Nguyễn Túの所在地と連絡先"
         },
         {
           "url": "/rental-prices/",
-          "label": "レンタル料金"
+          "label": "レンタル料金の参考表"
         }
       ]
     },
@@ -92,16 +92,20 @@
       ],
       "links": [
         {
-          "url": "/bike-types/scooters/",
-          "label": "スクーター"
+          "url": "/categories/motorbikes/scooters/",
+          "label": "スクーターの選び方記事"
+        },
+        {
+          "url": "/categories/motorbikes/semiautomatic/",
+          "label": "セミオート車の操作ガイド"
         },
         {
           "url": "/bike-types/50cc/",
-          "label": "50ccクラス"
+          "label": "50ccクラスの利用条件"
         },
         {
           "url": "/rental-prices/",
-          "label": "料金一覧"
+          "label": "車種別のレンタル料金"
         }
       ]
     },
@@ -126,16 +130,20 @@
       ],
       "links": [
         {
-          "url": "/rental-prices/",
-          "label": "スクーターの参考料金"
+          "url": "/bike-types/",
+          "label": "レンタル車種の比較"
         },
         {
-          "url": "/rental-guide/",
-          "label": "受取時の確認"
+          "url": "/categories/motorbikes/scooters/",
+          "label": "スクーターの詳しい記事"
+        },
+        {
+          "url": "/rental-prices/",
+          "label": "Honda VisionとAir Bladeの料金"
         },
         {
           "url": "/contact/",
-          "label": "車種を問い合わせる"
+          "label": "スクーターの空きを確認"
         }
       ]
     },
@@ -160,16 +168,20 @@
       ],
       "links": [
         {
-          "url": "/rental-prices/",
-          "label": "50ccの料金と保証金"
+          "url": "/bike-types/",
+          "label": "レンタル車両の種類"
+        },
+        {
+          "url": "/categories/motorbikes/50cc/",
+          "label": "50cc利用時の確認ガイド"
         },
         {
           "url": "/rental-guide/",
-          "label": "安全ガイド"
+          "label": "運転資格と安全の確認"
         },
         {
-          "url": "/contact/",
-          "label": "車両について問い合わせる"
+          "url": "/rental-prices/",
+          "label": "50cc車両の参考料金"
         }
       ]
     },
@@ -194,16 +206,20 @@
       ],
       "links": [
         {
-          "url": "/rental-guide/documents-deposit/",
-          "label": "書類と保証金"
+          "url": "/categories/prices/duration/",
+          "label": "日額・週額・月額の違い"
+        },
+        {
+          "url": "/categories/prices/deposits/",
+          "label": "保証金と返金条件"
         },
         {
           "url": "/bike-types/",
-          "label": "車種を比較"
+          "label": "料金を車種別に比較"
         },
         {
           "url": "/contact/",
-          "label": "見積もりを確認する"
+          "label": "希望日数で見積もりを依頼"
         }
       ]
     },
@@ -228,16 +244,20 @@
       ],
       "links": [
         {
+          "url": "/categories/guide/procedure/",
+          "label": "予約と必要書類の手順"
+        },
+        {
+          "url": "/categories/guide/inspection/",
+          "label": "受取時の車両点検"
+        },
+        {
           "url": "/rental-guide/documents-deposit/",
-          "label": "書類と保証金"
+          "label": "契約書類と保証金"
         },
         {
           "url": "/rental-prices/",
-          "label": "料金"
-        },
-        {
-          "url": "/contact/",
-          "label": "連絡先"
+          "label": "レンタル費用の目安"
         }
       ]
     },
@@ -262,16 +282,16 @@
       ],
       "links": [
         {
+          "url": "/rental-guide/",
+          "label": "レンタルの全手順"
+        },
+        {
+          "url": "/categories/prices/deposits/",
+          "label": "保証金・返還条件の詳細"
+        },
+        {
           "url": "/rental-prices/",
-          "label": "保証金を含む参考料金"
-        },
-        {
-          "url": "/faq/",
-          "label": "よくある質問"
-        },
-        {
-          "url": "/contact/",
-          "label": "契約条件を確認"
+          "label": "車種ごとの保証金と料金"
         }
       ]
     },
@@ -296,16 +316,16 @@
       ],
       "links": [
         {
-          "url": "/rental-prices/",
-          "label": "車種別料金表"
+          "url": "/rental-guide/",
+          "label": "予約前の手順"
         },
         {
-          "url": "/rental-guide/",
-          "label": "利用手順"
+          "url": "/rental-prices/",
+          "label": "料金と保証金の一覧"
         },
         {
           "url": "/contact/",
-          "label": "個別に問い合わせる"
+          "label": "個別の条件を問い合わせる"
         }
       ]
     },
@@ -330,16 +350,16 @@
       ],
       "links": [
         {
-          "url": "/rental-prices/",
-          "label": "参考料金表"
+          "url": "/about/",
+          "label": "Nguyễn Túのサービス情報"
         },
         {
-          "url": "/about/",
-          "label": "サービス情報"
+          "url": "/rental-prices/",
+          "label": "参考料金を確認して問い合わせ"
         },
         {
           "url": "/rental-guide/",
-          "label": "契約前の確認"
+          "label": "ご利用前の手続き"
         }
       ]
     },
@@ -365,11 +385,11 @@
       "links": [
         {
           "url": "/terms/",
-          "label": "サイト利用条件"
+          "label": "サイトの利用条件"
         },
         {
           "url": "/contact/",
-          "label": "お問い合わせ"
+          "label": "個人情報の扱いに関する問い合わせ"
         }
       ]
     },
@@ -399,11 +419,11 @@
         },
         {
           "url": "/rental-guide/",
-          "label": "レンタル手順"
+          "label": "利用前に確認する手順"
         },
         {
           "url": "/contact/",
-          "label": "問い合わせ"
+          "label": "契約条件について質問する"
         }
       ]
     },
@@ -428,16 +448,20 @@
       ],
       "links": [
         {
+          "url": "/categories/areas/old-quarter/",
+          "label": "旧市街・ホアンキエムの移動"
+        },
+        {
+          "url": "/categories/areas/longbien/",
+          "label": "ロンビエン周辺の移動"
+        },
+        {
           "url": "/routes-mobility/",
-          "label": "移動ルートの検討"
+          "label": "ハノイ市内のルート選び"
         },
         {
           "url": "/contact/",
-          "label": "所在地を確認"
-        },
-        {
-          "url": "/rental-guide/",
-          "label": "利用時の注意"
+          "label": "ロンビエンの店舗所在地を確認"
         }
       ]
     },
@@ -462,16 +486,20 @@
       ],
       "links": [
         {
+          "url": "/categories/routes/urban-routes/",
+          "label": "市内ルートと交通規制"
+        },
+        {
+          "url": "/categories/routes/weather/",
+          "label": "雨の日の移動と安全"
+        },
+        {
+          "url": "/categories/routes/alternatives/",
+          "label": "公共交通との比較"
+        },
+        {
           "url": "/hanoi-areas/",
-          "label": "エリア別移動"
-        },
-        {
-          "url": "/bike-types/",
-          "label": "車種を比較"
-        },
-        {
-          "url": "/rental-guide/",
-          "label": "安全の確認"
+          "label": "エリア別の移動ガイド"
         }
       ]
     },
@@ -497,15 +525,15 @@
       "links": [
         {
           "url": "/bike-types/",
-          "label": "バイクの種類の全記事"
+          "label": "バイクの種類と選び方"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/bike-types/scooters/",
+          "label": "スクーターレンタルの条件"
         },
         {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "url": "/rental-prices/",
+          "label": "スクーターの参考料金"
         }
       ]
     },
@@ -531,15 +559,15 @@
       "links": [
         {
           "url": "/bike-types/",
-          "label": "バイクの種類の全記事"
+          "label": "セミオートを含む車種比較"
+        },
+        {
+          "url": "/rental-prices/",
+          "label": "Honda Waveなどの料金"
         },
         {
           "url": "/rental-guide/",
-          "label": "レンタル前の確認"
-        },
-        {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "label": "受取前の操作と安全確認"
         }
       ]
     },
@@ -565,15 +593,15 @@
       "links": [
         {
           "url": "/bike-types/",
-          "label": "バイクの種類の全記事"
+          "label": "車種と排気量の比較"
+        },
+        {
+          "url": "/bike-types/50cc/",
+          "label": "50ccの利用資格と注意点"
         },
         {
           "url": "/rental-guide/",
-          "label": "レンタル前の確認"
-        },
-        {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "label": "運転前の法令・安全確認"
         }
       ]
     },
@@ -599,15 +627,11 @@
       "links": [
         {
           "url": "/bike-types/",
-          "label": "バイクの種類の全記事"
+          "label": "電動車両を含むレンタル車種"
         },
         {
           "url": "/rental-guide/",
-          "label": "レンタル前の確認"
-        },
-        {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "label": "電動車両の受取と安全確認"
         }
       ]
     },
@@ -633,15 +657,15 @@
       "links": [
         {
           "url": "/rental-prices/",
-          "label": "料金と利用条件の全記事"
+          "label": "日額・週額・月額の参考表"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/categories/prices/comparison/",
+          "label": "車種と期間の料金比較"
         },
         {
           "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "label": "利用期間を伝えて見積もり"
         }
       ]
     },
@@ -667,15 +691,15 @@
       "links": [
         {
           "url": "/rental-prices/",
-          "label": "料金と利用条件の全記事"
+          "label": "車種別の保証金と料金"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/rental-guide/documents-deposit/",
+          "label": "契約書類と保証金の確認"
         },
         {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "url": "/faq/",
+          "label": "保証金についてよくある質問"
         }
       ]
     },
@@ -701,15 +725,15 @@
       "links": [
         {
           "url": "/rental-prices/",
-          "label": "料金と利用条件の全記事"
+          "label": "受渡しを含む料金の確認"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/categories/guide/returns/",
+          "label": "返却時間と延長の注意"
         },
         {
           "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "label": "受取場所と費用の相談"
         }
       ]
     },
@@ -735,15 +759,15 @@
       "links": [
         {
           "url": "/rental-prices/",
-          "label": "料金と利用条件の全記事"
+          "label": "車種と期間別のレンタル料金"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/bike-types/",
+          "label": "レンタルバイクの特徴を比較"
         },
         {
           "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "label": "条件をそろえて見積もりを依頼"
         }
       ]
     },
@@ -769,15 +793,15 @@
       "links": [
         {
           "url": "/rental-guide/",
-          "label": "レンタルガイドの全記事"
+          "label": "ハノイのレンタル手順"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/rental-guide/documents-deposit/",
+          "label": "書類と保証金の確認"
         },
         {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "url": "/categories/guide/inspection/",
+          "label": "車両受取時の点検"
         }
       ]
     },
@@ -803,15 +827,15 @@
       "links": [
         {
           "url": "/rental-guide/",
-          "label": "レンタルガイドの全記事"
+          "label": "レンタル前の安全手順"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/categories/guide/city-driving/",
+          "label": "市内を走る際の注意"
         },
         {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "url": "/bike-types/",
+          "label": "操作経験に合う車種の選択"
         }
       ]
     },
@@ -837,15 +861,15 @@
       "links": [
         {
           "url": "/rental-guide/",
-          "label": "レンタルガイドの全記事"
+          "label": "ハノイでの運転前の準備"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/routes-mobility/",
+          "label": "市内でのルート選び"
         },
         {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "url": "/categories/routes/weather/",
+          "label": "雨季の走行判断"
         }
       ]
     },
@@ -871,15 +895,15 @@
       "links": [
         {
           "url": "/rental-guide/",
-          "label": "レンタルガイドの全記事"
+          "label": "レンタルと返却の手順"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/categories/prices/delivery/",
+          "label": "受取・返却場所の条件"
         },
         {
           "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "label": "返却時間の変更を連絡"
         }
       ]
     },
@@ -905,15 +929,15 @@
       "links": [
         {
           "url": "/hanoi-areas/",
-          "label": "ハノイのエリアの全記事"
+          "label": "ハノイのエリア別案内"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/categories/routes/urban-routes/",
+          "label": "旧市街周辺のルート確認"
         },
         {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "url": "/routes-mobility/",
+          "label": "移動手段の選び方"
         }
       ]
     },
@@ -939,15 +963,15 @@
       "links": [
         {
           "url": "/hanoi-areas/",
-          "label": "ハノイのエリアの全記事"
-        },
-        {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "label": "ロンビエンを含むエリア案内"
         },
         {
           "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "label": "ロンビエンのNguyễn Tú所在地"
+        },
+        {
+          "url": "/categories/areas/stations/",
+          "label": "駅と待合せ場所の案内"
         }
       ]
     },
@@ -973,15 +997,15 @@
       "links": [
         {
           "url": "/hanoi-areas/",
-          "label": "ハノイのエリアの全記事"
+          "label": "西湖・バーディンのエリア情報"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/categories/routes/urban-routes/",
+          "label": "ハノイ市内のルート案内"
         },
         {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "url": "/routes-mobility/",
+          "label": "交通手段を比較"
         }
       ]
     },
@@ -1007,15 +1031,15 @@
       "links": [
         {
           "url": "/hanoi-areas/",
-          "label": "ハノイのエリアの全記事"
+          "label": "駅周辺を含むエリア案内"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/categories/routes/alternatives/",
+          "label": "公共交通とタクシーの比較"
         },
         {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "url": "/routes-mobility/",
+          "label": "移動計画の立て方"
         }
       ]
     },
@@ -1041,15 +1065,15 @@
       "links": [
         {
           "url": "/routes-mobility/",
-          "label": "ルート・移動案内の全記事"
+          "label": "ハノイの市内移動ガイド"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/hanoi-areas/",
+          "label": "移動先エリアの確認"
         },
         {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "url": "/categories/guide/city-driving/",
+          "label": "市内走行の安全上の注意"
         }
       ]
     },
@@ -1075,15 +1099,15 @@
       "links": [
         {
           "url": "/routes-mobility/",
-          "label": "ルート・移動案内の全記事"
+          "label": "天候に応じた移動ルート"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/categories/guide/city-driving/",
+          "label": "雨の日の運転注意"
         },
         {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "url": "/categories/routes/alternatives/",
+          "label": "雨天時の公共交通の選択"
         }
       ]
     },
@@ -1109,15 +1133,15 @@
       "links": [
         {
           "url": "/routes-mobility/",
-          "label": "ルート・移動案内の全記事"
+          "label": "ハノイで選べる移動手段"
         },
         {
-          "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "url": "/hanoi-areas/",
+          "label": "エリア別の交通案内"
         },
         {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "url": "/categories/areas/stations/",
+          "label": "駅と公共交通へのアクセス"
         }
       ]
     },
@@ -1143,15 +1167,15 @@
       "links": [
         {
           "url": "/routes-mobility/",
-          "label": "ルート・移動案内の全記事"
+          "label": "郊外移動を含むルート案内"
         },
         {
           "url": "/rental-guide/",
-          "label": "レンタル前の確認"
+          "label": "長距離走行前の条件確認"
         },
         {
-          "url": "/contact/",
-          "label": "Nguyễn Túへ問い合わせる"
+          "url": "/categories/guide/inspection/",
+          "label": "出発前の車両点検"
         }
       ]
     }

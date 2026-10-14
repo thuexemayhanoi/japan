@@ -24,5 +24,6 @@ jobs:
           node scripts/build.mjs --check
           node scripts/qa-factory.mjs
           node scripts/qa-nonpost.mjs
+          node scripts/qa-internal-links.mjs
           node scripts/smoke-factory.mjs
           node scripts/qa-calculator.mjs

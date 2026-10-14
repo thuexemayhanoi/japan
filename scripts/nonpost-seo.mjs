@@ -12,7 +12,13 @@ export function validateNonPostSEO(matrix,pages){
   if(seen.has(m.title))throw Error('Duplicate nonpost title: '+p.url);seen.add(m.title);
   for(const x of m.sections){if(!x.heading||!x.text||x.text.length<40)throw Error('Thin nonpost section: '+p.url)}
   if(!Array.isArray(m.links)||m.links.length<2)throw Error('Missing contextual links: '+p.url);
-  for(const l of m.links)if(!all.has(l.url)||l.url===p.url||!l.label)throw Error('Invalid nonpost internal link '+p.url+' -> '+l.url);
+  for(const l of m.links){
+   // The Factory smoke test intentionally starts with zero accepted posts.
+   // A planned Silo remains a valid matrix recommendation but is not rendered
+   // until the archive exists (renderNonPostSEO already filters it out).
+   const dormantArchive=!all.has(l.url)&&l.url.startsWith('/categories/')&&Boolean(matrix.pages[l.url]);
+   if((!all.has(l.url)&&!dormantArchive)||l.url===p.url||!l.label)throw Error('Invalid nonpost internal link '+p.url+' -> '+l.url);
+  }
  }
 }
 export function applyNonPostSEO(p,matrix){
